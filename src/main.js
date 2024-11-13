@@ -12,18 +12,18 @@ const inputImg = document.querySelector('.input-img');
 const listImages = document.querySelector('.list-img');
 const loader = document.querySelector('.loader');
 const btnLoadMore = document.querySelector('.btn-load-more');
-btnLoadMore.classList.add('hidden');
+// btnLoadMore.classList.add('hidden');
 
 formImg.addEventListener('submit', handleSearch);
 
 btnLoadMore.addEventListener('click', loadMoreImages);
 
-
+let inputValue = '';
 
 function handleSearch(event) {
   event.preventDefault();
   formImg.reset();
-  const inputValue = inputImg.value.trim();
+  inputValue = inputImg.value.trim();
     loader.classList.remove('hidden');
     btnLoadMore.classList.add('hidden');
 
@@ -42,6 +42,8 @@ function handleSearch(event) {
   }
   fetchAndRenderImages();
 }
+console.log(handleSearch);
+
 async function fetchAndRenderImages() {
     try {
       const data = await fetchImages(inputValue);
@@ -76,4 +78,4 @@ function loadMoreImages () {
   addPage();
   loader.classList.remove('hidden');
   fetchAndRenderImages();
-}
+// }
