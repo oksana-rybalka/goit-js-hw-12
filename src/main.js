@@ -4,7 +4,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-import { fetchImages } from './js/pixabay-api';
+import { fetchImages, cleanPage, addPage } from './js/pixabay-api';
 import { renderImages } from './js/render-functions';
 
 const formImg = document.querySelector('.form-img');
@@ -16,25 +16,37 @@ btnLoadMore.classList.add('hidden');
 
 formImg.addEventListener('submit', handleSearch);
 
+btnLoadMore.addEventListener('click', loadMoreImages);
+
+
+
 function handleSearch(event) {
   event.preventDefault();
-  const inputValue = inputImg.value.trim();
-  loader.classList.remove('hidden');
   formImg.reset();
-  listImages.innerHTML = '';
+  const inputValue = inputImg.value.trim();
+    loader.classList.remove('hidden');
+    btnLoadMore.classList.add('hidden');
+
+    listImages.innerHTML = '';
+     cleanPage();
 
   if (inputValue === '') {
     loader.classList.add('hidden');
     return iziToast.warning({
       position: 'topCenter',
-      title: 'Увага!',
+      title: 'Поле не може бути пустим!',
       message: 'Будь ласка,введіть свій запит!',
       backgroundColor: '#ef3040',
     });
-  } else {
-    fetchImages(inputValue).then(({ hits }) => {
+  
+  }
+  fetchAndRenderImages();
+}
+async function fetchAndRenderImages() {
+    try {
+      const data = await fetchImages(inputValue);
       loader.classList.add('hidden');
-      if (hits.length === 0) {
+      if (data.hits.length === 0) {
         iziToast.warning({
           position: 'topCenter',
           title: 'Результатів не знайдено!',
@@ -42,11 +54,26 @@ function handleSearch(event) {
             'На жаль,за вашим запитом не знайдено зображень.Спробуйте ще раз!',
           backgroundColor: '#ef3040',
         });
-      } else {
-        renderImages(hits);
-      }
-    });
-  }
+    }
+    renderImages(data.hits);
+
+    if(data.totalHits > page*perPage){
+      btnLoadMore.classList.remove('hidden');
+    } else {
+      iziToast.info({
+        position:'topCenter',
+        title:'УПС!',
+        message:'Нам дуже шкода,але за вашим запитом більше зображень не знайдено!'
+      })
+    } 
+  } catch(error) {
+    console.error('Помилка отримання і відображення зображень', error);
+  } 
 }
 
-// btnLoadMore.addEventListener('click', onLoadMore());
+
+function loadMoreImages () {
+  addPage();
+  loader.classList.remove('hidden');
+  fetchAndRenderImages();
+}

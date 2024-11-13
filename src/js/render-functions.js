@@ -1,3 +1,14 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
+const listImages = document.querySelector('.list-img');
+
+const lightbox = new SimpleLightbox('.img-link', {
+  captions: true,
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 function renderImages(images) {
   const markup = images
     .map(
