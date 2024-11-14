@@ -84,7 +84,6 @@ body {
   background-color: #ff3d00;
   border-style: none;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  
 }
 
 .btn:hover .btn-load-more {
@@ -111,7 +110,6 @@ body {
   height: 20px;
   width: 20px;
   margin: 0 auto;
-
 }
 .loader:before {
   animation: ball1 1s infinite;
@@ -166,7 +164,7 @@ body {
     margin-top: 0;
   }
 }
-.hidden{
+.hidden {
   display: none;
 }
 .list-img {
@@ -182,7 +180,12 @@ body {
   width: calc((100% - 24px * 2) / 3);
   box-sizing: border-box;
   transition: transform 0.33s;
-  box-shadow: 30px 0 0 #fff;
+
+  border: 1px solid #393838;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  box-shadow: 10px 10px 10px 5px #393838;
 }
 
 .list-img-item:hover,
