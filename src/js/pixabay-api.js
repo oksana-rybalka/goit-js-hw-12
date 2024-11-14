@@ -33,4 +33,4 @@ function cleanPage() {
 function addPage() {
   page += 1;
 }
-export { fetchImages, cleanPage, addPage };
+export { fetchImages, cleanPage, addPage, page, perPage };

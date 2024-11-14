@@ -9,8 +9,8 @@ const lightbox = new SimpleLightbox('.img-link', {
   captionDelay: 250,
 });
 
-function renderImages(images) {
-  const markup = images
+function renderImages(array) {
+  const markup = array
     .map(
       ({
         largeImageURL,
