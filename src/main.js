@@ -30,7 +30,6 @@ function handleSearch(event) {
   inputValue = inputImg.value.trim();
 
   loader.classList.remove('hidden');
-  btnLoadMore.classList.add('hidden');
 
   listImages.innerHTML = '';
   cleanPage();
@@ -47,7 +46,6 @@ function handleSearch(event) {
 
   fetchAndRenderImages();
   formImg.reset();
-  btnLoadMore.classList.remove('hidden');
 }
 
 function loadMoreImages() {
@@ -64,14 +62,14 @@ async function fetchAndRenderImages() {
     loader.classList.add('hidden');
 
     if (data.hits.length === 0) {
+      btnLoadMore.classList.add('hidden');
       iziToast.warning({
         position: 'topCenter',
         title: 'Результатів не знайдено!',
-        message:
-          'На жаль,за вашим запитом не знайдено зображень.Спробуйте інший запит!',
+        message: 'Спробуйте інший запит!',
         backgroundColor: '#ef3040',
       });
-      btnLoadMore.classList.add('hidden');
+      return;
     }
 
     if (data.totalHits > page * perPage) {
@@ -81,12 +79,22 @@ async function fetchAndRenderImages() {
       iziToast.info({
         position: 'topCenter',
         title: 'УПС!',
-        message:
-          'Нам дуже шкода,але за вашим запитом більше зображень не знайдено!',
+        message: 'Це всі зображення за вашим запитом!',
       });
     }
+
     renderImages(data.hits);
   } catch (error) {
     console.error('Помилка отримання і відображення зображень', error);
+  }
+}
+function scrollPage() {
+  const galleryItem = document.querySelector('.list-image-item');
+  if (galleryItem) {
+    const { height } = galleryItem.getBoundingClientRect();
+    window.scrollBy({
+      top: height * 2,
+      behavior: 'smooth',
+    });
   }
 }

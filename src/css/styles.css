@@ -19,9 +19,6 @@
 
 body {
   padding: 15px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-
   background-color: rgb(80, 77, 67);
 }
 .container-images {
@@ -35,7 +32,8 @@ body {
   gap: 10px;
   padding-top: 40px;
   padding-bottom: 32px;
-  margin-left: calc(100% / 2.5);
+  /* margin-left: calc(100% / 2.5); */
+  justify-content: center;
 }
 .input-img {
   width: 272px;
@@ -93,6 +91,8 @@ body {
 .spinner {
   padding-top: 15px;
   padding-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 .loader {
   animation: rotate 1s infinite;
@@ -172,14 +172,14 @@ body {
   flex-wrap: wrap;
   gap: 24px;
   list-style: none;
-  padding: 34px 156px;
+  padding: 34px 156px 50px 156px;
   margin: 0;
 }
 
 .list-img-item {
   width: calc((100% - 24px * 2) / 3);
   box-sizing: border-box;
-  transition: transform 0.33s;
+  transition: transform 0.2s;
 
   border: 1px solid #393838;
   border-radius: 4px;
@@ -191,11 +191,11 @@ body {
 .list-img-item:hover,
 .list-img-item:focus {
   transform: scale(1.05);
-  border: #eb4b07;
+  box-shadow: 10px 10px 10px 5px #635757;
 }
 
 .img-link {
-  display: block;
+  display: flexbox;
   object-fit: cover;
 }
 .image-info {
@@ -213,9 +213,9 @@ body {
   align-items: center;
 }
 .title {
-  font-weight: 600;
+  font-weight: 900;
   font-size: 12px;
-  line-height: 133%;
+  line-height: 1.33333;
   letter-spacing: 0.04em;
   color: #2e2f42;
 }

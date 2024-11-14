@@ -26,6 +26,7 @@ async function fetchImages(inputValue) {
     console.error('Помилка отримання зображень', error);
   }
 }
+
 function cleanPage() {
   page = 1;
 }
@@ -33,4 +34,5 @@ function cleanPage() {
 function addPage() {
   page += 1;
 }
+
 export { fetchImages, cleanPage, addPage, page, perPage };
