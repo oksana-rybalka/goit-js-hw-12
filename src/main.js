@@ -45,7 +45,7 @@ function handleSearch(event) {
   }
 
   fetchAndRenderImages();
-  scrollPage();
+
   formImg.reset();
 }
 
@@ -53,7 +53,6 @@ function loadMoreImages() {
   addPage();
   loader.classList.remove('hidden');
   fetchAndRenderImages();
-  scrollPage();
 }
 
 async function fetchAndRenderImages() {
@@ -88,15 +87,16 @@ async function fetchAndRenderImages() {
     }
 
     renderImages(data.hits);
+    scrollPage();
   } catch (error) {
     console.log('Помилка отримання і відображення зображень', error);
   }
 }
 
 function scrollPage() {
-  const galleryItem = document.querySelector('.list-image-item');
-  console.log(galleryItem);
-  
+  const galleryItem = document.querySelector('.list-img-item');
+  console.log(galleryItem.getBoundingClientRect());
+
   if (galleryItem) {
     const { height } = galleryItem.getBoundingClientRect();
 
