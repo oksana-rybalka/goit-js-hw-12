@@ -18,6 +18,7 @@
 @import url('./footer.css');
 
 body {
+  font-family: 'Montserrat', sans-serif;
   padding: 15px;
   background-color: rgb(80, 77, 67);
 }
@@ -32,7 +33,6 @@ body {
   gap: 10px;
   padding-top: 40px;
   padding-bottom: 32px;
-  /* margin-left: calc(100% / 2.5); */
   justify-content: center;
 }
 .input-img {
@@ -197,15 +197,16 @@ body {
 
 .img-link {
   object-fit: cover;
+  max-height: 200px;
 }
 .image-info {
+  min-height: 48px;
   display: flex;
   flex-direction: row;
   border: 1px solid #808080;
   background-color: #fff;
   justify-content: space-around;
   padding: 4px 25px 4px 20px;
-  
 }
 
 .text-info-item {
