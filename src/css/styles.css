@@ -93,6 +93,8 @@ body {
   padding-bottom: 15px;
   margin-top: 5px;
   margin-bottom: 20px;
+  display: grid;
+  justify-content: center;
 }
 .loader {
   animation: rotate 1s infinite;
@@ -179,7 +181,6 @@ body {
 .list-img-item {
   width: calc((100% - 24px * 2) / 3);
   box-sizing: border-box;
-  transition: transform 0.2s;
 
   border: 1px solid #393838;
   border-radius: 4px;
@@ -195,7 +196,6 @@ body {
 }
 
 .img-link {
-  display: flexbox;
   object-fit: cover;
 }
 .image-info {
@@ -205,6 +205,7 @@ body {
   background-color: #fff;
   justify-content: space-around;
   padding: 4px 25px 4px 20px;
+  
 }
 
 .text-info-item {

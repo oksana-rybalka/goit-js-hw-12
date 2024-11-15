@@ -45,6 +45,7 @@ function handleSearch(event) {
   }
 
   fetchAndRenderImages();
+  scrollPage();
   formImg.reset();
 }
 
@@ -52,13 +53,14 @@ function loadMoreImages() {
   addPage();
   loader.classList.remove('hidden');
   fetchAndRenderImages();
+  scrollPage();
 }
 
 async function fetchAndRenderImages() {
   try {
     const data = await fetchImages(inputValue);
     console.log(data);
-    console.log(data.totalHits);
+
     loader.classList.add('hidden');
 
     if (data.hits.length === 0) {
@@ -77,21 +79,27 @@ async function fetchAndRenderImages() {
     } else {
       btnLoadMore.classList.add('hidden');
       iziToast.info({
-        position: 'topCenter',
+        position: 'bottomCenter',
         title: 'УПС!',
         message: 'Це всі зображення за вашим запитом!',
+        backgroundColor: '#ff3d00',
+        color: '#fff',
       });
     }
 
     renderImages(data.hits);
   } catch (error) {
-    console.error('Помилка отримання і відображення зображень', error);
+    console.log('Помилка отримання і відображення зображень', error);
   }
 }
+
 function scrollPage() {
   const galleryItem = document.querySelector('.list-image-item');
+  console.log(galleryItem);
+  
   if (galleryItem) {
     const { height } = galleryItem.getBoundingClientRect();
+
     window.scrollBy({
       top: height * 2,
       behavior: 'smooth',
