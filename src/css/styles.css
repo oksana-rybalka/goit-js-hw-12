@@ -24,7 +24,7 @@ body {
 }
 .container-images {
   display: block;
-  width: 100%;
+  width: 1440px;
   background-color: rgb(80, 77, 67);
 }
 .form-img {
@@ -170,12 +170,13 @@ body {
   display: none;
 }
 .list-img {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
   list-style: none;
   padding: 34px 156px 50px 156px;
-  margin: 0;
+  justify-content: center;
 }
 
 .list-img-item {
@@ -195,7 +196,7 @@ body {
   box-shadow: 10px 10px 10px 5px #635757;
 }
 
-.img-link {
+.image {
   object-fit: cover;
   max-height: 200px;
 }

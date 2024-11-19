@@ -23,7 +23,8 @@ function renderImages(array) {
       }) =>
         `<li class="list-img-item">
       <a class="img-link" href="${largeImageURL}" >
-      <img class="image" src="${webformatURL}" alt="${tags}" width="100%"/>
+      <img class="image" src="${webformatURL}" alt="${tags}" width="360"/>
+       </a>
        <div class="image-info">
         <div class="text-info-item">
           <h2 class="title">Likes</h2>
@@ -42,7 +43,6 @@ function renderImages(array) {
           <p class="data-title">${downloads}</p>
         </div>
       </div>
-        </a>
     </li> `
     )
     .join('');
